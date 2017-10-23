@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>InputTypes</title>
+</head>
+<body>
+<form id="SignUp" action="Redirect.html">
+<pre><label>First Name*     : </label><input type="text"	placeholder="Enter first name" autofocus required></pre>
+<pre><label>Last Name*      : </label><input type="text" placeholder="Enter last name" required></pre>
+<pre><label>EMail ID*       : </label><input type="email" placeholder="Enter email" required></pre>
+<pre><label>New password*   : </label><input type="password" placeholder="Enter password" id="p" onchange=validatePassword() required></pre>
+<pre><label>Retype password*: </label><input type="password" placeholder="retype the same password" id="r" onkeyup=validatePassword() required></pre>
+<pre><label>Date of Birth   : </label><input type="date" placeholder="mm/dd/yyyy" pattern="\d{1,2}/\d{1,2}/\d{4}"></pre>
+<pre><label>Upload photo    : </label><input type="file"></pre>
+<pre><label>Gender*         : </label><input type="radio" name="gender" value="male" id="g" required>Male<input type="radio" name="gender" value="female" id="g" required>Female<input type="radio" name="gender" value="others" id="g" required>Others</pre>
+<pre><input type="submit" value="Sign Up"></pre>
+<p>All the fields with * are required.</p>
+</form>
+<script>
+	var p = document.getElementById("p"), r = document.getElementById("r");
+	function validatePassword()
+	{
+		if (p.value != r.value)
+		{
+			r.setCustomValidity("Passwords Don't Match");
+		}
+		else
+		{
+			r.setCustomValidity('');
+		}
+	}
+</script>
+</body>
+</html>

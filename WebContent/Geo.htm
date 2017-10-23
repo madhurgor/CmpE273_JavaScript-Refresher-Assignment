@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Geolocation</title>
+</head>
+<body>
+	<h4>Please click this button to get your Latitude and Longitude.</h4>
+	<button onclick="loc()">Get Geolocation</button>
+	<p id="gl"></p>
+	<p id="map"></p>
+	<script>
+		function loc() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(pos, err);
+			} else {
+				document.getElementById('gl').innerHTML = "This browser does not support Geo Location.";
+			}
+		}
+
+		function pos(pos) {
+			document.getElementById('gl').innerHTML = "Latitude: "
+					+ pos.coords.latitude + " and Longitude: "
+					+ pos.coords.longitude;
+			document.getElementById("map").innerHTML = "<img src='https://maps.googleapis.com/maps/api/staticmap?center="
+					+ pos.coords.latitude
+					+ ","
+					+ pos.coords.longitude
+					+ "&zoom=14&size=600x400&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU'>";
+
+		}
+
+		function err(e) {
+			document.getElementById('gl').innerHTML = e.message+".";
+		}
+	</script>
+</body>
+</html>

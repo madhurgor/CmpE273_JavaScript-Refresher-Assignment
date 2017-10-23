@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Local Storage</title>
+</head>
+<body onload=counter()>
+<h4>Reload the page to increase the count.</h4>
+<p id='r1'></p>
+<p id='r2'></p>
+<script>
+function counter()
+{
+    if(typeof(Storage) !== "undefined")
+    {
+        localStorage.pageload = Number(localStorage.pageload)+1;
+        if(sessionStorage.pageload)
+        	sessionStorage.pageload = Number(sessionStorage.pageload)+1;
+        else
+        	sessionStorage.pageload = 1;
+        document.getElementById("r1").innerHTML = "You have tottaly reloaded thi page " + localStorage.pageload + " time(s).";
+        document.getElementById("r2").innerHTML = "You have reloaded the page in this session " + sessionStorage.pageload + " time(s).";
+    }
+    else
+    {
+        document.getElementById("r1").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
+</script>
+</body>
+</html>
